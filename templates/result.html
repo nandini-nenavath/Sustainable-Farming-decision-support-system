@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation Result</title>
+    <style>
+        .body{
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .crop-card {
+           
+            flex: 1;
+            padding: 100px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: flex-start;
+            display: flex;
+            background-color: #f4f4f4; 
+        }
+
+        .analysis-graph {
+            flex: 2;
+            padding: 20px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        .menu-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .menu-bar a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-bar a:hover {
+            background-color: #45a049;
+        }
+        .container .analysis-graph h2{
+            color: blue;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <a href="{{ url_for('dashboard') }}">Go To HomePage</a>
+    </div>
+        <h1 style="text-align: center;">Crop Recommendation Result</h1>
+    <div class="container">
+        {% if prediction == 'rice' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='Rice.jpeg') }}" alt="Rice">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Rice</h3>
+            <p>Rice is a staple food crop, requiring flooded fields for cultivation. It's a major dietary component in many countries.</p>
+            <h3>Suggestions</h3>
+            <p>Water Management: Maintain consistent water levels, especially during the critical stages of panicle initiation and flowering.
+                Fertilization: Apply nitrogen, phosphorus, and potassium fertilizers based on soil test results and crop requirements.
+                Pest Control: Monitor for pests like rice stem borers and diseases like blast; use integrated pest management (IPM) practices and resistant varieties.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='ricegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'maize' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='maize.jpeg') }}" alt="Maize">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Maize</h3>
+            <p>Maize is a staple food crop that grows well in warm climates with well-drained soil and adequate sunlight.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure well-drained soil with good nutrient availability for maize cultivation.
+                Weed Control: Manage weeds through pre-emergence and post-emergence herbicides or mechanical methods.
+                Fertilization: Apply nitrogen, phosphorus, and potassium fertilizers according to maize growth stages and soil nutrient levels.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='maizegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'chickpea' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='chickpea.jpg') }}" alt="Chickpea">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Chickpea</h3>
+            <p>Chickpeas, also known as garbanzo beans, are cool-season legumes that thrive in well-drained soil with moderate moisture.</p>
+            <h3>Suggestions</h3>
+            <p>Soil and Water: Ensure well-drained soil with good moisture retention for chickpea cultivation.
+                Disease Management: Monitor for diseases like fusarium wilt and ascochyta blight; use disease-resistant varieties and cultural practices.
+                Harvest Timing: Harvest chickpeas when pods are fully mature and dried for optimal yield and quality.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='chickpeagraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">  
+        {% elif prediction == 'kidneybeans' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='kidneybeans.png') }}" alt="Kidney Beans">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Kidney Beans</h3>
+            <p>Kidney beans are warm-season legumes that require fertile, well-drained soil and sufficient sunlight.</p>
+            <h3>Suggestions</h3>
+            <p>Support Systems: Provide support for climbing kidney bean varieties using trellises or stakes.
+                Pest Control: Monitor for pests like bean beetles and diseases like anthracnose; use integrated pest management (IPM) strategies and resistant varieties.
+                Harvesting: Harvest kidney beans when pods are mature and dry; avoid harvesting during rainy or damp conditions.
+                </p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='kidneybeansgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'pigeonpeas' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='pigeanpeasgraph.png') }}" alt="Pigeon Peas">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Pigeon Peas</h3>
+            <p>Kidney beans are warm-season legumes that require fertile, well-drained soil and sufficient sunlight.</p>
+            <h3>Suggestions</h3>
+            <p>Soil and Water: Maintain soil moisture and fertility for healthy moth bean growth and yield.
+                Pest Control: Monitor for pests like pod borers and diseases like powdery mildew; use integrated pest management (IPM) practices and resistant varieties.
+                Harvesting: Harvest moth beans when pods are fully mature and dried; avoid harvesting during wet conditions.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='pigeanpeasgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'mothbeans' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='mothbeans.png') }}" alt="Moth Beans">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Moth Beans</h3>
+            <p>Moth beans, also known as matki or dew beans, are warm-season legumes that grow well in sandy, well-drained soil with good moisture retention.</p>
+            <h3>Suggestions</h3>
+            <p>Soil and Water: Maintain soil moisture and fertility for healthy moth bean growth and yield.
+                Pest Control: Monitor for pests like pod borers and diseases like powdery mildew; use integrated pest management (IPM) practices and resistant varieties.
+                Harvesting: Harvest moth beans when pods are fully mature and dried; avoid harvesting during wet conditions.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='mothbeansgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'mungbean' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='mungbean.jpg') }}" alt="Mung Bean">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Mung Bean</h3>
+            <p>Mung beans, also known as green gram or moong dal, are cool-season legumes that thrive in well-drained loamy soil and moderate temperatures.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure well-drained soil with good nutrient availability for mung bean cultivation.
+                Weed Control: Manage weeds through pre-emergence and post-emergence herbicides or manual methods.
+                Pest and Disease Management: Monitor for pests like aphids and diseases like powdery mildew; use cultural practices and organic sprays as needed.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='mungbeangraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'blackgram' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='blackgram.jpg') }}" alt="Black Gram">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Black Gram (Urad Dal)</h3>
+            <p>Black gram, also known as urad dal or black lentil, is a warm-season legume that prefers well-drained soil with good moisture retention.</p>
+            <h3>Suggestions</h3>
+            <p>Soil and Water: Maintain soil moisture and fertility for healthy black gram growth and yield.
+                Disease Prevention: Use disease-resistant varieties and practice crop rotation to reduce disease incidence.
+                Pest Control: Monitor for pests like pod borers and aphids; use integrated pest management (IPM) strategies and natural enemies.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='blackgramgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'lentil' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='lentil.jpg') }}" alt="Lentil">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Lentil</h3>
+            <p>Lentils are cool-season legumes that grow well in fertile, well-drained soil and cooler temperatures.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure well-drained soil with good organic matter content for lentil cultivation.
+                Fertilization: Apply balanced fertilizers, especially nitrogen and phosphorus, based on soil test results.
+                Disease Management: Monitor for diseases like ascochyta blight and rust; use disease-resistant varieties and crop rotation.
+                </p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='lentilgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'pomegranate' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='pomegranate.jpg') }}" alt="Pomegranate">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Pomegranate</h3>
+            <p>Pomegranate is a fruit-bearing shrub or small tree that requires well-drained soil and ample sunlight.</p>
+            <h3>Suggestions</h3>
+            <p>Pruning: Regular pruning is essential to promote fruiting and maintain tree health.
+                Water Management: Provide adequate water during fruit development stages to prevent fruit cracking.
+                Pest Control: Manage pests like fruit flies and diseases like bacterial blight through integrated pest management (IPM) practices.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='pomegranategraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'banana' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='banana.jpg') }}" alt="Banana">
+            </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Banana</h3>
+            <p>Banana plants thrive in tropical climates with well-drained, fertile soil and regular watering.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Fertility: Ensure soil is rich in nutrients like potassium and magnesium for healthy banana growth.
+                Disease Management: Control diseases such as Panama disease and sigatoka leaf spot through proper sanitation and use of resistant varieties.
+                Harvesting: Harvest bananas when they are fully mature but still firm to avoid damage during transport.
+                </p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='bananagraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'mango' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='mango.jpg') }}" alt="Mango">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Mango</h3>
+            <p>Mango trees prefer warm, tropical climates with well-drained soil and regular watering during the growing season.</p>
+            <h3>Suggestions</h3>
+            <p>Pruning and Thinning: Prune trees to improve airflow and light penetration. Thin fruit clusters for larger, higher-quality fruits.
+                Pest and Disease Monitoring: Regularly monitor for pests like mango hoppers and diseases like anthracnose. Use organic sprays or biocontrol agents when necessary.
+                Post-Harvest Handling: Handle mangoes carefully to avoid bruising. Use proper storage and transportation methods to maintain fruit quality.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='mangograph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'grapes' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='grapes.jpg') }}" alt="Grapes">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Grapes</h3>
+            <p>Grapes thrive in temperate to subtropical climates with well-drained soil, sunlight, and adequate water.</p>
+            <h3>Suggestions</h3>
+            <p>Trellising: Proper trellising supports grapevines and improves sunlight exposure for optimal fruit development.
+                Pest and Disease Management: Control pests like grapevine moths and diseases like powdery mildew through timely interventions and sprays.
+                Harvest Timing: Harvest grapes when sugar levels are ideal for desired sweetness and flavor.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='grapesgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'watermelon' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='watermelon.jpg') }}" alt="Watermelon">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Watermelon</h3>
+            <p>Watermelon plants grow best in warm climates with sandy, well-drained soil and consistent watering.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure soil is well-drained and amend with organic matter for moisture retention.
+                Pest Control: Manage pests like aphids and cucumber beetles with insecticides or natural predators.
+                Harvesting: Harvest watermelons when the underside turns yellow and the stem starts to dry for ripe sweetness.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='watermelongraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'muskmelon' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='muskmelon.png') }}" alt="Muskmelon">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Muskmelon (Cantaloupe)</h3>
+            <p>Muskmelons, including cantaloupes, thrive in warm climates with fertile, well-drained soil and regular watering.</p>
+            <h3>Suggestions</h3>
+            <p>Pollination: Ensure adequate pollination for fruit set by attracting pollinators or hand-pollinating if needed.
+                Disease Prevention: Prevent diseases like powdery mildew by spacing plants properly for airflow and using fungicides as necessary.
+                Harvest Timing: Harvest muskmelons when the stem easily separates from the fruit for optimal ripeness.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='muskmelongraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'apple' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='Apple.jpg') }}" alt="Apple">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Apple</h3>
+            <p>Apples grow best in temperate climates with well-drained, slightly acidic soil and sufficient chilling hours for fruit development.</p>
+            <h3>Suggestions</h3>
+            <p>Pruning and Thinning: Prune apple trees annually to maintain shape and remove diseased branches. Thin fruit clusters for larger, better-quality apples.
+                Pest and Disease Control: Manage pests like codling moths and diseases like apple scab through IPM strategies and timely sprays.
+                Storage: Store apples in a cool, humid environment to prolong shelf life and maintain crispness.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='Applegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'orange' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='orange.jpg') }}" alt="Orange">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Orange</h3>
+            <p>Oranges thrive in subtropical to tropical climates with well-drained soil, sunlight, and regular irrigation.</p>
+            <h3>Suggestions</h3>
+            <p>Soil pH and Nutrition: Maintain soil pH for optimal citrus growth and provide balanced fertilization.
+                Pest and Disease Management: Control pests like citrus leaf miners and diseases like citrus canker through cultural practices and sprays.
+                Harvest Timing: Harvest oranges when fully ripe for best flavor and juice content.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='orangegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'papaya' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='papaya.jpg') }}" alt="Papaya">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Papaya</h3>
+            <p>Papaya plants prefer tropical climates with well-drained soil, sunlight, and adequate water.</p>
+            <h3>Suggestions</h3>
+            <p>Planting Density: Plant papaya trees at appropriate spacing for optimal growth and fruit development.
+                Watering: Provide consistent watering, especially during fruiting stages, to prevent fruit drop and improve yield.
+                Pest Control: Manage pests like papaya fruit flies and diseases like powdery mildew through IPM practices and sprays.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='papayagraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'coconut' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='coconut.jpg') }}" alt="Coconut">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Coconut</h3>
+            <p>Coconut palms thrive in coastal tropical regions with sandy, well-drained soil, ample sunlight, and regular watering.</p>
+            <h3>Suggestions</h3>
+            <p>Nutrient Management: Ensure proper nutrient levels, especially potassium, for healthy coconut tree growth and fruit production.
+                Pest Control: Control pests like rhinoceros beetles and diseases like lethal yellowing through integrated pest management techniques.
+                Harvesting: Harvest coconuts when mature for both water and meat, and handle them carefully to prevent damage.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='coconutgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'cotton' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='Cotton.jpeg') }}" alt="Cotton">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Cotton</h3>
+            <p>Cotton is a major fiber crop used in textile production. It requires warm temperatures and adequate water for growth and also plants grow well in warm climates with well-drained soil, sunlight, and regular moisture during the growing season.</p> 
+            <h3>Suggestions</h3>
+            <p>Soil Health: Maintain soil fertility through proper fertilization and organic matter incorporation.
+                Pest Management: Monitor for pests like bollworms and aphids; use integrated pest management (IPM) strategies and resistant varieties.
+                Watering: Provide consistent irrigation during critical growth stages, especially flowering and boll development.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='cottongraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'jute' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='jute.jpg') }}" alt="Jute">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Jute</h3>
+            <p>Jute plants thrive in tropical climates with well-drained, fertile soil and regular watering.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure well-drained soil with adequate moisture for jute cultivation.
+                Weed Control: Manage weeds through mechanical methods or herbicides to prevent competition with jute plants.
+                Harvesting: Harvest jute fibers when plants are in full bloom and stems start to turn brown for optimal fiber quality.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='jutegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'coffee' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='coffee.jpg') }}" alt="Coffee">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Coffee</h3>
+            <p>Coffee plants grow best in subtropical to tropical climates with well-drained, acidic soil, and adequate rainfall.</p>
+            <h3>Suggestions</h3>
+            <p>Altitude and Climate: Choose coffee varieties suited to your altitude and climate conditions.
+                Shade Management: Maintain appropriate shade levels for coffee plants to prevent stress and improve bean quality.
+                Disease Control: Monitor for diseases like coffee leaf rust and manage with fungicides or cultural practices.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='coffeegraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'soybeans' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='soybean.jpg') }}" alt="Soybeans">  
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Soybeans</h3>
+            <p>Soybeans thrive in temperate to tropical climates with well-drained, fertile soil and regular moisture.</p>
+            <h3>Suggestions</h3>
+            <p>Crop Rotation: Rotate soybeans with other crops to improve soil health and reduce pest pressure.
+                Fertilization: Apply balanced fertilizers to meet soybean nutrient requirements, especially nitrogen and phosphorus.
+                Weed Control: Manage weeds through pre-emergence and post-emergence herbicides for optimal soybean growth.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='soyabeangraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'beans' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='beans.jpg') }}" alt="Beans">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Beans</h3>
+            <p>Beans, including common beans like black beans and kidney beans, thrive in well-drained soil and sunny locations.</p>
+            <h3>Suggestions</h3>
+            <p>Support Systems: Provide trellises or stakes for climbing beans varieties.
+                Disease Prevention: Practice crop rotation and use disease-resistant varieties to prevent diseases like powdery mildew and bacterial blight.
+                Harvesting: Harvest beans and peas when pods are plump and seeds are mature for best flavor and texture.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='beansg1.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'peas' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='peas.jpg') }}" alt="Peas">
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Peas</h3>
+            <p>Peas, including garden peas and snow peas, prefer cool climates with fertile, well-drained soil.</p>
+            <h3>Suggestions</h3>
+            <p>Support Systems: Provide trellises or stakes for climbing pea varieties.
+                Disease Prevention: Practice crop rotation and use disease-resistant varieties to prevent diseases like powdery mildew and bacterial blight.
+                Harvesting: Harvest beans and peas when pods are plump and seeds are mature for best flavor and texture.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='peasgreen.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'groundnuts' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='groundnut.jpg') }}" alt="Groundnuts">
+            
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Groundnuts (Peanuts)</h3>
+            <p>Groundnuts, also known as peanuts, grow well in warm climates with well-drained soil and adequate moisture.</p>
+            <h3>Suggestions</h3>
+            <p>Soil Preparation: Ensure well-drained soil with good moisture retention for groundnut cultivation.
+                Pest and Disease Management: Monitor for pests like aphids and diseases like leaf spot; use resistant varieties and cultural practices.
+                Harvest Timing: Harvest groundnuts when pods are mature and fully dried for optimal yield and quality.
+                </p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='groundnutgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+    <div class="container">
+        {% elif prediction == 'cowpeas' %}
+        <div class="crop-card">
+            <img src="{{ url_for('static', filename='cowpeas.jpg') }}" alt="Cowpeas">
+
+        </div>
+        <div class="analysis-graph">
+            <h2>The Recommended Crop: {{ prediction }}</h2>
+            <h3>Cowpeas</h3>
+            <p>Cowpeas, also known as black-eyed peas, thrive in warm climates with well-drained soil and regular moisture.</p>
+            <h3>Suggestions</h3>
+            <p>Soil and Water: Maintain soil moisture and fertility for healthy cowpea growth and yield.
+                Pest Control: Monitor for pests like cowpea weevils and control through insecticides or natural methods.
+                Harvesting: Harvest cowpeas when pods are filled and before they become too dry for best taste and texture.</p>
+            <h3>Analysis Graph</h3>
+            <img src="{{ url_for('static', filename='cowpeasgraph.png') }}" alt="Crop Analysis Graph">
+        </div>
+    </div>
+        
+        {% else %}
+        <p>No information available for the predicted crop.</p>
+        {% endif %}
+
+</body>
+</html>

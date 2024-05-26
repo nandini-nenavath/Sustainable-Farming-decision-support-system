@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Recommendation Result</title>
+    <style>
+    body{
+      justify-content: center;
+      text-align: center;
+    }
+    .fertilizer-info {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        overflow: hidden;
+        text-align: center;
+    }
+    .fertilizer-info img {
+        display: block; 
+        margin: 0 auto 10px; 
+    }
+    .fertilizer-info h3 {
+        margin-top: 0;
+    }
+    .fertilizer-info p {
+        margin-bottom: 5px;
+    }
+    .menu-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .menu-bar a {
+            text-decoration: none;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-bar a:hover {
+            background-color: #45a049;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <a href="{{ url_for('dashboard') }}">Go To HomePage</a>
+    </div>
+    <h1>Fertilizer Recommendation Result</h1>
+    <p>Fertilizer: {{ predict }}</p>
+
+    {% if predict == 'DAP' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='DAP.jpg') }}" alt="DAP">
+        <h3>DAP (Diammonium Phosphate)</h3>
+        <p><strong>Composition:</strong> Contains 18% nitrogen (N) and 46% phosphorus pentoxide (P2O5).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Typically Apply 50-100 kg per hectare before sowing or during the early stages of crop growth.</p>
+        <p><strong>Benefits:</strong> Provides essential nutrients for early plant growth, promotes root development, and improves flowering and fruiting.p>
+        <p><strong>Precautions:</strong> Avoid direct contact with skin or eyes. Store in a cool, dry place away from children and animals.</p>
+    </div>
+
+    {% elif predict == 'Magnesium Sulphate' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='magnesiumsulphate.png') }}" alt="Magnesium Sulphate">
+        <h3>Magnesium Sulphate</h3>
+        <p><strong>Composition:</strong> Contains magnesium (Mg) and sulfur (S).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 20-30 kg per hectare as a soil amendment or foliar spray during periods of magnesium deficiency.</p>
+        <p><strong>Benefits:</strong> Supplies essential nutrients for plant photosynthesis, growth, and overall health.</p>
+        <p><strong>Precautions:</strong> Follow recommended application rates to avoid nutrient imbalances.</p>
+    </div>
+
+
+    {% elif predict == '13:32:26 NPK' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='13:32:26.png') }}" alt="NPK">
+        <h3>13:32:26 NPK</h3>
+        <p><strong>Composition:</strong> Contains 13% nitrogen (N), 32% phosphorus pentoxide (P2O5), and 26% potassium oxide (K2O).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 50-100 kg per hectare depending on crop and soil nutrient requirements.</p>
+        <p><strong>Benefits:</strong> Provides balanced nutrition for plant growth, enhances root development, and supports flowering and fruit set.</p>
+        <p><strong>Precautions:</strong> Avoid overdosing to prevent nutrient runoff or toxicity.</p>
+    </div>
+
+    {% elif predict == '12:32:16 NPK' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='12_32_16.png') }}" alt="NPK">
+        <h3>12:32:16 NPK</h3>
+        <p><strong>Composition:</strong> Contains 12% nitrogen (N), 32% phosphorus pentoxide (P2O5), and 16% potassium oxide (K2O).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 50-80 kg per hectare during the vegetative and flowering stages of crops.</p>
+        <p><strong>Benefits:</strong> Promotes healthy vegetative growth, improves flowering, and boosts fruit development.</p>
+        <p><strong>Precautions:</strong> Avoid excessive use to prevent nutrient imbalances; apply in split doses for better absorption.</p>
+    </div>
+
+    {% elif predict == 'Urea' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='urea.jpg') }}" alt="Urea">
+        <h3>Urea</h3>
+        <p><strong>Composition:</strong> Contains 46% nitrogen (N) in the form of urea.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 50-100 kg per hectare as a nitrogen source during the early stages of crop growth.</p>
+        <p><strong>Benefits:</strong> Rapidly releases nitrogen for immediate plant uptake, stimulates vegetative growth, and enhances protein synthesis. </p>
+        <p><strong>Precautions:</strong> Apply evenly to prevent nitrogen losses; avoid contact with seeds to prevent seedling damage.</p>
+    </div>
+
+    {% elif predict == '50:26:26 NPK' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='50_26_26.png') }}" alt="NPK">
+        <h3>50:26:26 NPK</h3>
+        <p><strong>Composition:</strong> Contains 50% nitrogen (N), 26% phosphorus pentoxide (P2O5), and 26% potassium oxide (K2O).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 80-120 kg per hectare during the growth stages requiring high nutrient levels.</p>
+        <p><strong>Benefits:</strong> Provides a balanced nutrient supply for vigorous growth, improves yield, and enhances crop quality.p>
+        <p><strong>Precautions:</strong> Adjust application rates based on soil fertility and crop demand; avoid excess phosphorus in phosphorus-rich soils.</p>
+    </div>
+
+    {% elif predict == 'Chilated Micronutrient' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='Chelated.jpg') }}" alt="Chilated Micronutrient">
+        <h3>Chilated Micronutrient</h3>
+        <p><strong>Composition:</strong> Contains essential micronutrients like iron (Fe), zinc (Zn), manganese (Mn), etc., in chelated form.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Applied as a supplement to correct micronutrient deficiencies in crops.</p>
+        <p><strong>Benefits:</strong> Improves nutrient uptake, enhances plant health, and prevents nutrient deficiency symptoms.</p>
+        <p><strong>Precautions:</strong> Use as directed to avoid nutrient imbalances or toxicity.</p>
+    </div>
+
+    {% elif predict == 'SSP' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='superphosphate.png') }}" alt="SSP">
+        <h3>SSP (Single Super Phosphate)</h3>
+        <p><strong>Composition:</strong> Contains 16-20% phosphorus (P) as water-soluble phosphate.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 100-150 kg per hectare before sowing or as a basal fertilizer for phosphorus-deficient soils.</p>
+        <p><strong>Benefits:</strong> Provides readily available phosphorus for early plant growth, root development, and flowering.</p>
+        <p><strong>Precautions:</strong> Incorporate into soil well to prevent nutrient leaching; avoid direct contact with seeds to prevent seedling injury.</p>
+    </div>
+
+    {% elif predict == 'MOP' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='PotassimChloride.jpg') }}" alt="MOP">
+        <h3>MOP (Muriate of Potash)</h3>
+        <p><strong>Composition:</strong> Contains 50-60% potassium (K) as chloride.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 50-100 kg per hectare during crop growth stages requiring potassium supplementation.</p>
+        <p><strong>Benefits:</strong> Improves plant vigor, enhances disease resistance, and promotes fruit quality and yield.</p>
+        <p><strong>Precautions:</strong> Avoid direct contact with plant foliage; apply evenly and avoid excess application to prevent potassium toxicity.</p>
+    </div>
+
+    {% elif predict == '20:20:20 NPK' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='20_20_20.jpg') }}" alt="NPK">
+        <h3>20:20:20 NPK</h3>
+        <p><strong>Composition:</strong> Contains 20% nitrogen (N), 20% phosphorus pentoxide (P2O5), and 20% potassium oxide (K2O).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 50-80 kg per hectare as a balanced fertilizer during crop growth stages.</p>
+        <p><strong>Benefits:</strong> Provides uniform nutrient supply, supports overall plant growth, and improves yield and quality.</p>
+        <p><strong>Precautions:</strong> Avoid over-application to prevent nutrient imbalances.</p>
+    </div>
+
+
+    {% elif predict == 'Ferrous Sulphate' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='ferroussulphate.jpg') }}" alt="Ferrous Sulphate">
+        <h3>Ferrous Sulphate</h3>
+        <p><strong>Composition:</strong> Contains iron (Fe) in sulfate form.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Apply 5-10 kg per hectare as a soil amendment or foliar spray to correct iron deficiencies.</p>
+        <p><strong>Benefits:</strong> Corrects iron chlorosis symptoms, improves chlorophyll production, and enhances plant growth and yield.</p>
+        <p><strong>Precautions:</strong> Dissolve in water before application; avoid applying to alkaline soils or in combination with alkaline substances.</p>
+    </div>
+
+    {% elif predict == '10:10:10 NPK' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='10_10_10.png') }}" alt="NPK">
+        <h3>10:10:10 NPK</h3>
+        <p><strong>Composition:</strong> Contains 10% nitrogen (N), 10% phosphorus pentoxide (P2O5), and 10% potassium oxide (K2O).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong>  Apply 50-100 kg per hectare as a general-purpose fertilizer for balanced nutrition.</p>
+        <p><strong>Benefits:</strong> Supports overall plant growth, root development, flowering, and fruiting.p>
+        <p><strong>Precautions:</strong> Adjust application rates based on crop requirements and soil nutrient levels; avoid excessive use to prevent nutrient imbalances.</p>
+    </div>
+
+    {% elif predict == 'Hydrated Lime' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='hydratedlime.png') }}" alt="Hydrated Lime">
+        <h3>Hydrated Lime</h3>
+        <p><strong>Composition:</strong> Contains calcium hydroxide (Ca(OH)2).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Applied to raise soil pH and improve soil structure.</p>
+        <p><strong>Benefits:</strong> Corrects acidic soils, enhances nutrient availability, and promotes root growth.</p>
+        <p><strong>Precautions:</strong> Use with caution as excess application can lead to soil alkalinity.</p>
+    </div>
+
+    {% elif predict == 'Diammonium phosphate' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='DAP.jpg') }}" alt="Diammonium Phosphate">
+        <h3>Diammonium Phosphate</h3>
+        <p><strong>Composition:</strong> Contains 18% nitrogen (N) and 46% phosphorus pentoxide (P2O5).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Typically applied at 25-50 kg per hectare for most crops.</p>
+        <p><strong>Benefits:</strong> Provides readily available nitrogen and phosphorus for plant growth and development.</p>
+        <p><strong>Precautions:</strong> Avoid direct contact with skin or eyes. Store in a cool, dry place away from children and animals.</p>
+    </div>
+
+    {% elif predict == 'Potassium Sulphate' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='PotassimSulphate.jpg') }}" alt="Potassium Sulphate">
+        <h3>Potassium Sulphate</h3>
+        <p><strong>Composition:</strong> Contains potassium (K) and sulfur (S).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Applied as a potassium supplement for crops with potassium deficiency.</p>
+        <p><strong>Benefits:</strong> Supports plant water regulation, enzyme activation, and overall plant health.</p>
+        <p><strong>Precautions:</strong> Apply as directed to avoid over-application and nutrient imbalances.</p>
+    </div>
+
+    {% elif predict == 'Potassium Chloride' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='PotassimChloride.jpg') }}" alt="Potassium Chloride">
+        <h3>Potassium Chloride</h3>
+        <p><strong>Composition:</strong> Contains potassium (K) and chloride (Cl).</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Applied to correct potassium deficiencies in crops.</p>
+        <p><strong>Benefits:</strong> Essential for plant growth, water regulation, and enzyme activation.</p>
+        <p><strong>Precautions:</strong> Use with care to prevent chloride buildup and potential soil salinity.</p>
+    </div>
+
+    {% elif predict == 'Super Phosphate' %}
+    <div class="fertilizer-info">
+        <img src="{{ url_for('static', filename='superphosphate.png') }}" alt="Super Phosphate">
+        <h3>Super Phosphate</h3>
+        <p><strong>Composition:</strong> Contains phosphorus (P) in water-soluble form.</p>
+        <p><strong>Recommended Usage/Application Rate:</strong> Applied to supply phosphorus for plant growth and development.</p>
+        <p><strong>Benefits:</strong> Enhances root development, flowering, and fruiting.</p>
+        <p><strong>Precautions:</strong> Use as directed to avoid excess phosphorus accumulation in soils.</p>
+    </div>
+    {% else %}
+    <p>No information</p>
+    {% endif %}
+
+
+</body>
+</html>

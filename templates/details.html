@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 20px; 
+        }
+        #north, #south {
+            flex-basis: calc(50% - 10px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center; /* Center content horizontally */
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .crop-image {
+            max-height: 250px; 
+            max-width: 250px; 
+        }
+        .crop-image1 {
+            max-height: 400px; 
+            max-width: 400px; 
+        }
+        .crop-image2 {
+            max-height: 500px; 
+            max-width: 500px; 
+        }
+        .fert-image {
+            max-height: 600px; 
+            max-width: 600px; 
+        }
+        #fertilizer {
+            flex-basis: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center; /* Center content horizontally */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="north">
+            <h2>North</h2>
+            <p>
+                <strong>Crops and Count:</strong><br>
+                <img src="{{ url_for('static', filename='ncountofcrop.png') }}" alt="Count of Crop"><br>
+                <br>
+                <strong>NPK Contents:</strong><br>
+                <img src="{{ url_for('static', filename='nitrogen1.png') }}" alt="Nitrogen" class="crop-image">
+                <img src="{{ url_for('static', filename='phosphorous1.png') }}" alt="Phosphorus" class="crop-image">
+                <img src="{{ url_for('static', filename='potassium1.png') }}" alt="Potassium" class="crop-image"><br>
+                <br>
+                <strong>Performance Metrics:</strong><br>
+                <img src="{{ url_for('static', filename='north.png') }}" alt="Metrics">
+            </p>
+        </div>
+        <div id="south">
+            <h2>South</h2>
+            <p>
+                <strong>Crops and Count:</strong><br>
+                <img src="{{ url_for('static', filename='scountofcrop.png') }}" alt="Count of Crop" class="crop-image1"><br>
+                <br>
+                <br>
+                <strong>NPK Contents:</strong><br>
+                <img src="{{ url_for('static', filename='nitrogen2.png') }}" alt="Nitrogen" class="crop-image">
+                <img src="{{ url_for('static', filename='phosphorous2.png') }}" alt="Phosphorus" class="crop-image">
+                <img src="{{ url_for('static', filename='potassium2.png') }}" alt="Potassium" class="crop-image"><br>
+                <br>
+                <strong>Performance Metrics:</strong><br>
+                <img src="{{ url_for('static', filename='saccuracy.png') }}" alt="South Accuracy"class="crop-image2" >
+            </p>
+        </div>
+    </div>
+    <div id="fertilizer">
+        <h2>Fertilizer</h2>
+        <p>
+            <strong>Fertilizers and Count:</strong><br>
+            <img src="{{ url_for('static', filename='countoffertilizer.png') }}" alt="Count of Crop" class="fert-image"><br>
+            <br>
+            <br>
+            <strong>Performance Metrics:</strong><br>
+            <img src="{{ url_for('static', filename='fmetrics.png') }}" alt="fmetrics" class="fert-image">
+        </p>
+    </div>
+</body>
+</html>
